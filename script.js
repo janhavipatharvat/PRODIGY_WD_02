@@ -13,14 +13,18 @@ function updateDisplay() {
     let h = hours < 10 ? "0" + hours : hours;
     let m = minutes < 10 ? "0" + minutes : minutes;
     let s = seconds < 10 ? "0" + seconds : seconds;
-    let ms = milliseconds < 10 ? "00" + milliseconds :
-             milliseconds < 100 ? "0" + milliseconds :
-             milliseconds;
+
+    
+    let ms = Math.floor(milliseconds / 10);
+    ms = ms < 10 ? "0" + ms : ms;
 
     document.getElementById("display").innerText =
         h + ":" + m + ":" + s + ":" + ms;
 
-    // Smooth circular progress
+    
+}
+
+    // circular progress
     let totalMilliseconds = (seconds * 1000) + milliseconds;
     let progress = (totalMilliseconds / 60000) * 360;
 
@@ -104,4 +108,5 @@ resetBtn.addEventListener("click", () => {
 lapBtn.addEventListener("click", () => {
     lapTimer();
     setActive(lapBtn);
+
 });
