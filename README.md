@@ -20,7 +20,7 @@ Create a fully functional stopwatch web application with start, pause, reset, an
 - JavaScript
 
 ### 🔹 Live Website:
-(Add your GitHub Pages link here)
+ https://janhavipatharvat.github.io/PRODIGY_WD_02
 
 ---
 
