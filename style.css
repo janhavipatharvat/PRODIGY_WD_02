@@ -112,7 +112,7 @@ body {
 
 /* Base Support */
 .stand {
-    display: none; /* Removed old floating stand */
+    display: none; 
 }
 
 /* Buttons */
@@ -140,22 +140,22 @@ button.active {
     transform: scale(1.1);
 }
 
-/* When Start is active */
+
 #startBtn.active {
     background: #00ff88;
 }
 
-/* When Pause is active */
+
 #pauseBtn.active {
     background: #ff8800;
 }
 
-/* When Reset is active */
+
 #resetBtn.active {
     background: #ff0033;
 }
 
-/* When Lap is active */
+
 #lapBtn.active {
     background: #00d4ff;
 }
@@ -170,3 +170,4 @@ button.active {
     max-height: 150px;
     overflow-y: auto;
 }
+
