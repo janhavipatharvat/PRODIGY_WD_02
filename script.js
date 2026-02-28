@@ -8,28 +8,25 @@ const startBtn = document.getElementById("startBtn");
 const pauseBtn = document.getElementById("pauseBtn");
 const resetBtn = document.getElementById("resetBtn");
 const lapBtn = document.getElementById("lapBtn");
+const display = document.getElementById("display");
+const alarmBody = document.querySelector(".alarm-body");
+const lapList = document.getElementById("lapList");
 
 function updateDisplay() {
+    // Format time
     let h = hours < 10 ? "0" + hours : hours;
     let m = minutes < 10 ? "0" + minutes : minutes;
     let s = seconds < 10 ? "0" + seconds : seconds;
-
-    
     let ms = Math.floor(milliseconds / 10);
     ms = ms < 10 ? "0" + ms : ms;
 
-    document.getElementById("display").innerText =
-        h + ":" + m + ":" + s + ":" + ms;
+    display.innerText = `${h}:${m}:${s}:${ms}`;
 
-    
-}
+    // Circular progress: consider 1 minute = full circle (360deg)
+    let totalMilliseconds = seconds * 1000 + milliseconds;
+    let progress = (totalMilliseconds / 60000) * 360; // adjust denominator if needed
 
-    // circular progress
-    let totalMilliseconds = (seconds * 1000) + milliseconds;
-    let progress = (totalMilliseconds / 60000) * 360;
-
-    document.querySelector(".alarm-body").style.background =
-        `conic-gradient(#00f2fe ${progress}deg, #0f2027 ${progress}deg)`;
+    alarmBody.style.background = `conic-gradient(#00f2fe ${progress}deg, #0f2027 ${progress}deg)`;
 }
 
 function startTimer() {
@@ -70,23 +67,20 @@ function resetTimer() {
     minutes = 0;
     hours = 0;
     updateDisplay();
-    document.getElementById("lapList").innerHTML = "";
+    lapList.innerHTML = "";
 }
 
 function lapTimer() {
     if (timer === null) return;
-
-    let lapTime = document.getElementById("display").innerText;
+    let lapTime = display.innerText;
     let li = document.createElement("li");
     li.innerText = "Lap: " + lapTime;
-    document.getElementById("lapList").appendChild(li);
+    lapList.appendChild(li);
 }
 
 /* Button Active Logic */
-
 function setActive(button) {
-    document.querySelectorAll(".buttons button")
-        .forEach(btn => btn.classList.remove("active"));
+    document.querySelectorAll(".buttons button").forEach(btn => btn.classList.remove("active"));
     button.classList.add("active");
 }
 
@@ -108,5 +102,4 @@ resetBtn.addEventListener("click", () => {
 lapBtn.addEventListener("click", () => {
     lapTimer();
     setActive(lapBtn);
-
 });
