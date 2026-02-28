@@ -1,0 +1,163 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #3a2b63, #b24592);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+}
+
+.container {
+    margin-top: 40px;
+}
+
+.subtitle {
+    margin-bottom: 30px;
+    font-size: 14px;
+    color: #eee;
+}
+
+/* Alarm Wrapper */
+.alarm-wrapper {
+    position: relative;
+    width: 280px;
+    margin: 60px auto;
+}
+
+/* Bells */
+.bell {
+    width: 80px;
+    height: 50px;
+    background: #f4c430;
+    border-radius: 80px 80px 0 0;
+    position: absolute;
+    top: -35px;
+}
+
+/* Bell Positions */
+.left-bell {
+    left: 20px;
+}
+
+.right-bell {
+    right: 20px;
+}
+
+/* Hammer between bells */
+.alarm-wrapper::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 8px;
+    background: #f4c430;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+
+/* Alarm Body */
+.alarm-body {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: conic-gradient(#00f2fe 0deg, #0f2027 0deg);
+    box-shadow: 
+        0 0 40px rgba(0,0,0,0.6),
+        inset 0 0 40px rgba(0,0,0,0.6);
+}
+
+/* Time Display */
+#display {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Clock Legs */
+.alarm-body::before,
+.alarm-body::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    background: #f4c430;
+    bottom: -35px;
+    border-radius: 10px;
+}
+
+.alarm-body::before {
+    left: 60px;
+    transform: rotate(20deg);
+}
+
+.alarm-body::after {
+    right: 60px;
+    transform: rotate(-20deg);
+}
+
+/* Base Support */
+.stand {
+    display: none; /* Removed old floating stand */
+}
+
+/* Buttons */
+.buttons button {
+    padding: 10px 18px;
+    margin: 8px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.buttons button:nth-child(1) { background: #28a745; color: white; }
+.buttons button:nth-child(2) { background: #ffc107; color: black; }
+.buttons button:nth-child(3) { background: #dc3545; color: white; }
+.buttons button:nth-child(4) { background: #17a2b8; color: white; }
+
+.buttons button:hover {
+    transform: scale(1.1);
+}
+
+/* Active button state */
+button.active {
+    box-shadow: 0 0 15px white;
+    transform: scale(1.1);
+}
+
+/* When Start is active */
+#startBtn.active {
+    background: #00ff88;
+}
+
+/* When Pause is active */
+#pauseBtn.active {
+    background: #ff8800;
+}
+
+/* When Reset is active */
+#resetBtn.active {
+    background: #ff0033;
+}
+
+/* When Lap is active */
+#lapBtn.active {
+    background: #00d4ff;
+}
+
+.laps {
+    margin-top: 20px;
+}
+
+#lapList {
+    list-style: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
